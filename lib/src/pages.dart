@@ -1,1 +1,1 @@
-enum PageType { unknow, cloudflare, details, reader }
+enum PageType { unknow, cloudflare, details, reader, gallery }
