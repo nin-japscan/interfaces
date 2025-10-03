@@ -4,7 +4,7 @@ part 'book.freezed.dart';
 
 part 'book.g.dart';
 
-@freezed
+@Freezed(toStringOverride: false)
 sealed class Book with _$Book {
   const factory Book.details({
     required String url,
@@ -34,7 +34,7 @@ sealed class Book with _$Book {
   factory Book.fromJson(Map<String, dynamic> json) => _$BookFromJson(json);
 }
 
-@freezed
+@Freezed(toStringOverride: false)
 sealed class BookContent with _$BookContent {
   const factory BookContent.volume({
     required String name,
@@ -53,7 +53,7 @@ sealed class BookContent with _$BookContent {
       _$BookContentFromJson(json);
 }
 
-@freezed
+@Freezed(toStringOverride: false)
 sealed class Scans with _$Scans {
   const factory Scans({
     @Default([]) List<String> links,
