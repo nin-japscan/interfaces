@@ -14,8 +14,8 @@ Book _$BookFromJson(Map<String, dynamic> json) {
   switch (json['runtimeType']) {
     case 'details':
       return BookDetails.fromJson(json);
-    case 'liveSearch':
-      return LiveSearch.fromJson(json);
+    case 'cover':
+      return Cover.fromJson(json);
 
     default:
       throw CheckedFromJsonException(
@@ -30,7 +30,6 @@ Book _$BookFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Book {
   String get url;
-  @JsonKey(name: 'image')
   String get imageUrl;
   String get name;
 
@@ -353,21 +352,19 @@ class _$BookDetailsCopyWithImpl<$Res> implements $BookDetailsCopyWith<$Res> {
 
 /// @nodoc
 @JsonSerializable()
-class LiveSearch extends Book {
-  const LiveSearch({
+class Cover extends Book {
+  const Cover({
     required this.name,
-    @JsonKey(name: 'image') required this.imageUrl,
+    required this.imageUrl,
     required this.url,
     final String? $type,
-  }) : $type = $type ?? 'liveSearch',
+  }) : $type = $type ?? 'cover',
        super._();
-  factory LiveSearch.fromJson(Map<String, dynamic> json) =>
-      _$LiveSearchFromJson(json);
+  factory Cover.fromJson(Map<String, dynamic> json) => _$CoverFromJson(json);
 
   @override
   final String name;
   @override
-  @JsonKey(name: 'image')
   final String imageUrl;
   @override
   final String url;
@@ -380,19 +377,19 @@ class LiveSearch extends Book {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $LiveSearchCopyWith<LiveSearch> get copyWith =>
-      _$LiveSearchCopyWithImpl<LiveSearch>(this, _$identity);
+  $CoverCopyWith<Cover> get copyWith =>
+      _$CoverCopyWithImpl<Cover>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$LiveSearchToJson(this);
+    return _$CoverToJson(this);
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is LiveSearch &&
+            other is Cover &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.imageUrl, imageUrl) ||
                 other.imageUrl == imageUrl) &&
@@ -405,22 +402,20 @@ class LiveSearch extends Book {
 }
 
 /// @nodoc
-abstract mixin class $LiveSearchCopyWith<$Res> implements $BookCopyWith<$Res> {
-  factory $LiveSearchCopyWith(
-    LiveSearch value,
-    $Res Function(LiveSearch) _then,
-  ) = _$LiveSearchCopyWithImpl;
+abstract mixin class $CoverCopyWith<$Res> implements $BookCopyWith<$Res> {
+  factory $CoverCopyWith(Cover value, $Res Function(Cover) _then) =
+      _$CoverCopyWithImpl;
   @override
   @useResult
-  $Res call({String name, @JsonKey(name: 'image') String imageUrl, String url});
+  $Res call({String name, String imageUrl, String url});
 }
 
 /// @nodoc
-class _$LiveSearchCopyWithImpl<$Res> implements $LiveSearchCopyWith<$Res> {
-  _$LiveSearchCopyWithImpl(this._self, this._then);
+class _$CoverCopyWithImpl<$Res> implements $CoverCopyWith<$Res> {
+  _$CoverCopyWithImpl(this._self, this._then);
 
-  final LiveSearch _self;
-  final $Res Function(LiveSearch) _then;
+  final Cover _self;
+  final $Res Function(Cover) _then;
 
   /// Create a copy of Book
   /// with the given fields replaced by the non-null parameter values.
@@ -432,7 +427,7 @@ class _$LiveSearchCopyWithImpl<$Res> implements $LiveSearchCopyWith<$Res> {
     Object? url = null,
   }) {
     return _then(
-      LiveSearch(
+      Cover(
         name: null == name
             ? _self.name
             : name // ignore: cast_nullable_to_non_nullable

@@ -23,11 +23,11 @@ sealed class Book with _$Book {
     String? author,
   }) = BookDetails;
 
-  const factory Book.liveSearch({
+  const factory Book.cover({
     required String name,
-    @JsonKey(name: 'image') required String imageUrl,
+    required String imageUrl,
     required String url,
-  }) = LiveSearch;
+  }) = Cover;
 
   const Book._();
 

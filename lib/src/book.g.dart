@@ -51,20 +51,19 @@ Map<String, dynamic> _$BookDetailsToJson(BookDetails instance) =>
       'runtimeType': instance.$type,
     };
 
-LiveSearch _$LiveSearchFromJson(Map<String, dynamic> json) => LiveSearch(
+Cover _$CoverFromJson(Map<String, dynamic> json) => Cover(
   name: json['name'] as String,
-  imageUrl: json['image'] as String,
+  imageUrl: json['imageUrl'] as String,
   url: json['url'] as String,
   $type: json['runtimeType'] as String?,
 );
 
-Map<String, dynamic> _$LiveSearchToJson(LiveSearch instance) =>
-    <String, dynamic>{
-      'name': instance.name,
-      'image': instance.imageUrl,
-      'url': instance.url,
-      'runtimeType': instance.$type,
-    };
+Map<String, dynamic> _$CoverToJson(Cover instance) => <String, dynamic>{
+  'name': instance.name,
+  'imageUrl': instance.imageUrl,
+  'url': instance.url,
+  'runtimeType': instance.$type,
+};
 
 Volume _$VolumeFromJson(Map<String, dynamic> json) => Volume(
   name: json['name'] as String,
