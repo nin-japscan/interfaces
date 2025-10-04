@@ -15,7 +15,7 @@ dev_dependencies:
   freezed: ^3.2.3
   json_serializable: ^6.11.1
   injectable_generator: ^2.8.1
-  leancode_lint: ^18.0.0
+  leancode_lint: ^19.0.0
 
 scripts:
   gen:
