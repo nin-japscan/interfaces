@@ -620,7 +620,7 @@ class _$VolumeCopyWithImpl<$Res> implements $VolumeCopyWith<$Res> {
 class Chapter extends BookContent {
   const Chapter({
     required this.name,
-    required this.url,
+    required this.path,
     this.scans = const Scans(),
     final String? $type,
   }) : $type = $type ?? 'chapter',
@@ -630,7 +630,7 @@ class Chapter extends BookContent {
 
   @override
   final String name;
-  final String url;
+  final String path;
   @JsonKey()
   final Scans scans;
 
@@ -656,13 +656,13 @@ class Chapter extends BookContent {
         (other.runtimeType == runtimeType &&
             other is Chapter &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.url, url) || other.url == url) &&
+            (identical(other.path, path) || other.path == path) &&
             (identical(other.scans, scans) || other.scans == scans));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, name, url, scans);
+  int get hashCode => Object.hash(runtimeType, name, path, scans);
 }
 
 /// @nodoc
@@ -672,7 +672,7 @@ abstract mixin class $ChapterCopyWith<$Res>
       _$ChapterCopyWithImpl;
   @override
   @useResult
-  $Res call({String name, String url, Scans scans});
+  $Res call({String name, String path, Scans scans});
 
   $ScansCopyWith<$Res> get scans;
 }
@@ -688,16 +688,16 @@ class _$ChapterCopyWithImpl<$Res> implements $ChapterCopyWith<$Res> {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({Object? name = null, Object? url = null, Object? scans = null}) {
+  $Res call({Object? name = null, Object? path = null, Object? scans = null}) {
     return _then(
       Chapter(
         name: null == name
             ? _self.name
             : name // ignore: cast_nullable_to_non_nullable
                   as String,
-        url: null == url
-            ? _self.url
-            : url // ignore: cast_nullable_to_non_nullable
+        path: null == path
+            ? _self.path
+            : path // ignore: cast_nullable_to_non_nullable
                   as String,
         scans: null == scans
             ? _self.scans

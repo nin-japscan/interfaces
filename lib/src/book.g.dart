@@ -83,7 +83,7 @@ Map<String, dynamic> _$VolumeToJson(Volume instance) => <String, dynamic>{
 
 Chapter _$ChapterFromJson(Map<String, dynamic> json) => Chapter(
   name: json['name'] as String,
-  url: json['url'] as String,
+  path: json['path'] as String,
   scans: json['scans'] == null
       ? const Scans()
       : Scans.fromJson(json['scans'] as Map<String, dynamic>),
@@ -92,7 +92,7 @@ Chapter _$ChapterFromJson(Map<String, dynamic> json) => Chapter(
 
 Map<String, dynamic> _$ChapterToJson(Chapter instance) => <String, dynamic>{
   'name': instance.name,
-  'url': instance.url,
+  'path': instance.path,
   'scans': instance.scans.toJson(),
   'runtimeType': instance.$type,
 };

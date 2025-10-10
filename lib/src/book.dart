@@ -43,7 +43,7 @@ sealed class BookContent with _$BookContent {
 
   const factory BookContent.chapter({
     required String name,
-    required String url,
+    required String path,
     @Default(Scans()) Scans scans,
   }) = Chapter;
 
