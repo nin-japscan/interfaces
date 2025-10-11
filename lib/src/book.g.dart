@@ -7,8 +7,8 @@ part of 'book.dart';
 // **************************************************************************
 
 BookDetails _$BookDetailsFromJson(Map<String, dynamic> json) => BookDetails(
-  url: json['url'] as String,
-  imageUrl: json['imageUrl'] as String,
+  path: json['path'] as String,
+  coverPath: json['coverPath'] as String,
   name: json['name'] as String,
   synopsis: json['synopsis'] as String,
   content: (json['content'] as List<dynamic>)
@@ -34,8 +34,8 @@ BookDetails _$BookDetailsFromJson(Map<String, dynamic> json) => BookDetails(
 
 Map<String, dynamic> _$BookDetailsToJson(BookDetails instance) =>
     <String, dynamic>{
-      'url': instance.url,
-      'imageUrl': instance.imageUrl,
+      'path': instance.path,
+      'coverPath': instance.coverPath,
       'name': instance.name,
       'synopsis': instance.synopsis,
       'content': instance.content.map((e) => e.toJson()).toList(),
@@ -53,15 +53,15 @@ Map<String, dynamic> _$BookDetailsToJson(BookDetails instance) =>
 
 Cover _$CoverFromJson(Map<String, dynamic> json) => Cover(
   name: json['name'] as String,
-  imageUrl: json['imageUrl'] as String,
-  url: json['url'] as String,
+  coverPath: json['coverPath'] as String,
+  path: json['path'] as String,
   $type: json['runtimeType'] as String?,
 );
 
 Map<String, dynamic> _$CoverToJson(Cover instance) => <String, dynamic>{
   'name': instance.name,
-  'imageUrl': instance.imageUrl,
-  'url': instance.url,
+  'coverPath': instance.coverPath,
+  'path': instance.path,
   'runtimeType': instance.$type,
 };
 

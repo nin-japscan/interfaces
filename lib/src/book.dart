@@ -7,8 +7,8 @@ part 'book.g.dart';
 @Freezed(toStringOverride: false)
 sealed class Book with _$Book {
   const factory Book.details({
-    required String url,
-    required String imageUrl,
+    required String path,
+    required String coverPath,
     required String name,
     required String synopsis,
     required List<BookContent> content,
@@ -25,8 +25,8 @@ sealed class Book with _$Book {
 
   const factory Book.cover({
     required String name,
-    required String imageUrl,
-    required String url,
+    required String coverPath,
+    required String path,
   }) = Cover;
 
   const Book._();

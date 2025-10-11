@@ -29,8 +29,8 @@ Book _$BookFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Book {
-  String get url;
-  String get imageUrl;
+  String get path;
+  String get coverPath;
   String get name;
 
   /// Create a copy of Book
@@ -48,15 +48,15 @@ mixin _$Book {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is Book &&
-            (identical(other.url, url) || other.url == url) &&
-            (identical(other.imageUrl, imageUrl) ||
-                other.imageUrl == imageUrl) &&
+            (identical(other.path, path) || other.path == path) &&
+            (identical(other.coverPath, coverPath) ||
+                other.coverPath == coverPath) &&
             (identical(other.name, name) || other.name == name));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, url, imageUrl, name);
+  int get hashCode => Object.hash(runtimeType, path, coverPath, name);
 }
 
 /// @nodoc
@@ -64,7 +64,7 @@ abstract mixin class $BookCopyWith<$Res> {
   factory $BookCopyWith(Book value, $Res Function(Book) _then) =
       _$BookCopyWithImpl;
   @useResult
-  $Res call({String url, String imageUrl, String name});
+  $Res call({String path, String coverPath, String name});
 }
 
 /// @nodoc
@@ -79,19 +79,19 @@ class _$BookCopyWithImpl<$Res> implements $BookCopyWith<$Res> {
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? url = null,
-    Object? imageUrl = null,
+    Object? path = null,
+    Object? coverPath = null,
     Object? name = null,
   }) {
     return _then(
       _self.copyWith(
-        url: null == url
-            ? _self.url
-            : url // ignore: cast_nullable_to_non_nullable
+        path: null == path
+            ? _self.path
+            : path // ignore: cast_nullable_to_non_nullable
                   as String,
-        imageUrl: null == imageUrl
-            ? _self.imageUrl
-            : imageUrl // ignore: cast_nullable_to_non_nullable
+        coverPath: null == coverPath
+            ? _self.coverPath
+            : coverPath // ignore: cast_nullable_to_non_nullable
                   as String,
         name: null == name
             ? _self.name
@@ -106,8 +106,8 @@ class _$BookCopyWithImpl<$Res> implements $BookCopyWith<$Res> {
 @JsonSerializable()
 class BookDetails extends Book {
   const BookDetails({
-    required this.url,
-    required this.imageUrl,
+    required this.path,
+    required this.coverPath,
     required this.name,
     required this.synopsis,
     required final List<BookContent> content,
@@ -130,9 +130,9 @@ class BookDetails extends Book {
       _$BookDetailsFromJson(json);
 
   @override
-  final String url;
+  final String path;
   @override
-  final String imageUrl;
+  final String coverPath;
   @override
   final String name;
   final String synopsis;
@@ -189,9 +189,9 @@ class BookDetails extends Book {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is BookDetails &&
-            (identical(other.url, url) || other.url == url) &&
-            (identical(other.imageUrl, imageUrl) ||
-                other.imageUrl == imageUrl) &&
+            (identical(other.path, path) || other.path == path) &&
+            (identical(other.coverPath, coverPath) ||
+                other.coverPath == coverPath) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.synopsis, synopsis) ||
                 other.synopsis == synopsis) &&
@@ -217,8 +217,8 @@ class BookDetails extends Book {
   @override
   int get hashCode => Object.hash(
     runtimeType,
-    url,
-    imageUrl,
+    path,
+    coverPath,
     name,
     synopsis,
     const DeepCollectionEquality().hash(_content),
@@ -243,8 +243,8 @@ abstract mixin class $BookDetailsCopyWith<$Res> implements $BookCopyWith<$Res> {
   @override
   @useResult
   $Res call({
-    String url,
-    String imageUrl,
+    String path,
+    String coverPath,
     String name,
     String synopsis,
     List<BookContent> content,
@@ -272,8 +272,8 @@ class _$BookDetailsCopyWithImpl<$Res> implements $BookDetailsCopyWith<$Res> {
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? url = null,
-    Object? imageUrl = null,
+    Object? path = null,
+    Object? coverPath = null,
     Object? name = null,
     Object? synopsis = null,
     Object? content = null,
@@ -289,13 +289,13 @@ class _$BookDetailsCopyWithImpl<$Res> implements $BookDetailsCopyWith<$Res> {
   }) {
     return _then(
       BookDetails(
-        url: null == url
-            ? _self.url
-            : url // ignore: cast_nullable_to_non_nullable
+        path: null == path
+            ? _self.path
+            : path // ignore: cast_nullable_to_non_nullable
                   as String,
-        imageUrl: null == imageUrl
-            ? _self.imageUrl
-            : imageUrl // ignore: cast_nullable_to_non_nullable
+        coverPath: null == coverPath
+            ? _self.coverPath
+            : coverPath // ignore: cast_nullable_to_non_nullable
                   as String,
         name: null == name
             ? _self.name
@@ -355,8 +355,8 @@ class _$BookDetailsCopyWithImpl<$Res> implements $BookDetailsCopyWith<$Res> {
 class Cover extends Book {
   const Cover({
     required this.name,
-    required this.imageUrl,
-    required this.url,
+    required this.coverPath,
+    required this.path,
     final String? $type,
   }) : $type = $type ?? 'cover',
        super._();
@@ -365,9 +365,9 @@ class Cover extends Book {
   @override
   final String name;
   @override
-  final String imageUrl;
+  final String coverPath;
   @override
-  final String url;
+  final String path;
 
   @JsonKey(name: 'runtimeType')
   final String $type;
@@ -391,14 +391,14 @@ class Cover extends Book {
         (other.runtimeType == runtimeType &&
             other is Cover &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.imageUrl, imageUrl) ||
-                other.imageUrl == imageUrl) &&
-            (identical(other.url, url) || other.url == url));
+            (identical(other.coverPath, coverPath) ||
+                other.coverPath == coverPath) &&
+            (identical(other.path, path) || other.path == path));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, name, imageUrl, url);
+  int get hashCode => Object.hash(runtimeType, name, coverPath, path);
 }
 
 /// @nodoc
@@ -407,7 +407,7 @@ abstract mixin class $CoverCopyWith<$Res> implements $BookCopyWith<$Res> {
       _$CoverCopyWithImpl;
   @override
   @useResult
-  $Res call({String name, String imageUrl, String url});
+  $Res call({String name, String coverPath, String path});
 }
 
 /// @nodoc
@@ -423,8 +423,8 @@ class _$CoverCopyWithImpl<$Res> implements $CoverCopyWith<$Res> {
   @pragma('vm:prefer-inline')
   $Res call({
     Object? name = null,
-    Object? imageUrl = null,
-    Object? url = null,
+    Object? coverPath = null,
+    Object? path = null,
   }) {
     return _then(
       Cover(
@@ -432,13 +432,13 @@ class _$CoverCopyWithImpl<$Res> implements $CoverCopyWith<$Res> {
             ? _self.name
             : name // ignore: cast_nullable_to_non_nullable
                   as String,
-        imageUrl: null == imageUrl
-            ? _self.imageUrl
-            : imageUrl // ignore: cast_nullable_to_non_nullable
+        coverPath: null == coverPath
+            ? _self.coverPath
+            : coverPath // ignore: cast_nullable_to_non_nullable
                   as String,
-        url: null == url
-            ? _self.url
-            : url // ignore: cast_nullable_to_non_nullable
+        path: null == path
+            ? _self.path
+            : path // ignore: cast_nullable_to_non_nullable
                   as String,
       ),
     );
