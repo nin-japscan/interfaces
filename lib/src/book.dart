@@ -34,6 +34,35 @@ sealed class Book with _$Book {
   factory Book.fromJson(Map<String, dynamic> json) => _$BookFromJson(json);
 }
 
+extension BookX on Book {
+  BookDetails merge(Book other) => switch ((this, other)) {
+    (final BookDetails to, final BookDetails from) => from.copyWith(
+      name: from.name.isEmpty ? to.name : from.name,
+      coverPath: from.coverPath.isEmpty ? to.coverPath : from.coverPath,
+      path: from.path.isEmpty ? to.path : from.path,
+      alternativeNames: from.alternativeNames.isEmpty
+          ? to.alternativeNames
+          : from.alternativeNames,
+      genres: from.genres.isEmpty ? to.genres : from.genres,
+      originalName: from.originalName ?? to.originalName,
+      type: from.type ?? to.type,
+      status: from.status ?? to.status,
+      releaseDate: from.releaseDate ?? to.releaseDate,
+      demographic: from.demographic ?? to.demographic,
+      artist: from.artist ?? to.artist,
+      author: from.author ?? to.author,
+      synopsis: from.synopsis.isEmpty ? to.synopsis : from.synopsis,
+      content: from.content.isEmpty ? to.content : from.content,
+    ),
+    (final Cover cover, final BookDetails details) => details.copyWith(
+      name: cover.name.isEmpty ? details.name : cover.name,
+      coverPath: cover.coverPath.isEmpty ? details.coverPath : cover.coverPath,
+      path: cover.path.isEmpty ? details.path : cover.path,
+    ),
+    _ => throw Exception('Cannot merge $runtimeType with ${other.runtimeType}'),
+  };
+}
+
 @Freezed(toStringOverride: false)
 sealed class BookContent with _$BookContent {
   const factory BookContent.volume({
