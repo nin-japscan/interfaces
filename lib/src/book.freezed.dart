@@ -621,7 +621,7 @@ class Chapter extends BookContent {
   const Chapter({
     required this.name,
     required this.path,
-    this.scans = const Scans(),
+    this.scans,
     final String? $type,
   }) : $type = $type ?? 'chapter',
        super._();
@@ -631,8 +631,7 @@ class Chapter extends BookContent {
   @override
   final String name;
   final String path;
-  @JsonKey()
-  final Scans scans;
+  final Scans? scans;
 
   @JsonKey(name: 'runtimeType')
   final String $type;
@@ -672,9 +671,9 @@ abstract mixin class $ChapterCopyWith<$Res>
       _$ChapterCopyWithImpl;
   @override
   @useResult
-  $Res call({String name, String path, Scans scans});
+  $Res call({String name, String path, Scans? scans});
 
-  $ScansCopyWith<$Res> get scans;
+  $ScansCopyWith<$Res>? get scans;
 }
 
 /// @nodoc
@@ -688,7 +687,11 @@ class _$ChapterCopyWithImpl<$Res> implements $ChapterCopyWith<$Res> {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({Object? name = null, Object? path = null, Object? scans = null}) {
+  $Res call({
+    Object? name = null,
+    Object? path = null,
+    Object? scans = freezed,
+  }) {
     return _then(
       Chapter(
         name: null == name
@@ -699,10 +702,10 @@ class _$ChapterCopyWithImpl<$Res> implements $ChapterCopyWith<$Res> {
             ? _self.path
             : path // ignore: cast_nullable_to_non_nullable
                   as String,
-        scans: null == scans
+        scans: freezed == scans
             ? _self.scans
             : scans // ignore: cast_nullable_to_non_nullable
-                  as Scans,
+                  as Scans?,
       ),
     );
   }
@@ -711,8 +714,12 @@ class _$ChapterCopyWithImpl<$Res> implements $ChapterCopyWith<$Res> {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $ScansCopyWith<$Res> get scans {
-    return $ScansCopyWith<$Res>(_self.scans, (value) {
+  $ScansCopyWith<$Res>? get scans {
+    if (_self.scans == null) {
+      return null;
+    }
+
+    return $ScansCopyWith<$Res>(_self.scans!, (value) {
       return _then(_self.copyWith(scans: value));
     });
   }
